@@ -13,7 +13,7 @@
         <ion-grid fixed>
           <ion-row v-for="(infonew, index) in info" :key="index">
             <ion-col size="12" >
-              <img :src="infonew.image">
+              <img :src="infonew.image"><br>
               <div class="btn">
                 <ion-icon :src = "volumeMediumOutline" class="volume" @click="active(infonew)"></ion-icon>
               </div>
@@ -126,7 +126,7 @@ ion-icon {
   font-size: 2.3rem;
   text-align: center;
   font-family: serif;
-  transform: translateY(-20vh);
+  transform: translateY(-21vh);
   font-weight: 100;
 }
 
@@ -145,8 +145,8 @@ ion-col{
 }
 
 img {
-       max-width: 90%;
-       max-height: 40%;
+       width: 22rem;
+       height: 20rem;
        margin-top: -8px;
        margin-left: 26px;
 }
@@ -171,10 +171,10 @@ img {
 
 
 .sentence {
-     font-size: 20px;
+     font-size: 19px;
      color: aliceblue;
      margin-top: -30px;
-     transform: translateX(6.5vh);
+     transform: translateX(7vh);
    }
 
 .translate1 {

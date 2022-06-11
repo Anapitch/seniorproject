@@ -12,7 +12,6 @@ import ThingPage from '../views/ThingPage.vue';
 import PlacePage from '../views/PlacePage.vue';
 import OccupationPage from '../views/OccupationPage.vue';
 import ActivityPage from '../views/ActivityPage.vue';
-import TextPage from '../views/TextPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -78,11 +77,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/activity',
     name: 'Activity',
     component: ActivityPage,
-  },
-  {
-    path: '/text',
-    name: 'Text',
-    component: TextPage,
   },
 ];
 

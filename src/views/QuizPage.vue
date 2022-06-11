@@ -18,11 +18,71 @@
 
       <ion-grid fixed>
         <ion-row>
-          <ion-col size="12" router-link="/text">
-           
-            </ion-col>
+          <ion-col size="12">
+            <div class="time_score">
+              <div class="time">
+                <img class="img_clock" src="../assets/clock.png" />
+                <span id="time">{{ time }}</span>
+              </div>
+
+              <ion-button class="btn_reset" @click="reset()">reset</ion-button>
+
+              <div class="score">
+                <img class="img_score" src="../assets/score.png" />
+                <span id="score">{{ score }}</span>
+              </div>
+            </div>
+            <div v-if="datas.length > 1">
+            <h1>{{count+1}}/10</h1>
+              <p class="textquiz">
+                {{ datas[count].question }} แปลอย่างไรให้ถูกต้อง
+              </p>
+              <img :src="datas[count].image" />
+              <ion-button
+                class="btn"
+                expand="block"
+                shape="round"
+                @click="
+                  checkanswer(
+                    datas[count].answer.startsWith('A'),
+                    datas[count].question
+                  )
+                "
+                >{{ datas[count].choice_A }}</ion-button
+              ><br />
+              <ion-button
+                class="box"
+                expand="block"
+                shape="round"
+                @click="
+                  checkanswer(
+                    datas[count].answer.startsWith('B'),
+                    datas[count].question
+                  )
+                "
+                >{{ datas[count].choice_B }}</ion-button
+              >
+            </div>
+          </ion-col>
         </ion-row>
       </ion-grid>
+            
+      <diV class="popup" v-if="open">
+        <div class="time_popup">
+          <img class="img_clock_popup" src="../assets/clock.png" />
+          <span id="time">{{ time }}</span>
+        </div>
+
+        <div class="score_popup">
+          <img class="img_score_popup" src="../assets/score.png" />
+          <span id="score">{{ score }}</span>
+        </div>
+
+        <ion-button class="btn_play" @click="reset()">play</ion-button>
+        <ion-button class="btn_back" @click="$router.push('/game')"
+          >back</ion-button
+        >
+      </diV>
     </ion-content>
   </ion-page>
 </template>
@@ -31,6 +91,7 @@
 import { IonPage, IonContent, IonGrid, IonRow, IonCol } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { chevronBack, volumeMediumOutline } from "ionicons/icons";
+import axios from "axios";
 
 export default defineComponent({
   name: "QuizPage",
@@ -46,6 +107,74 @@ export default defineComponent({
       chevronBack,
       volumeMediumOutline,
     };
+  },
+  data() {
+    return {
+      time: 90,
+      finish: false,
+      start: false,
+      score: 0,
+      open: false,
+      datas: [null],
+      count: 0,
+      greetingSpeech: new SpeechSynthesisUtterance(),
+    };
+  },
+  created() {
+    this.countDownTimer();
+    this.getData();
+  },
+  methods: {
+    async getData() {
+      this.datas = [];
+      await axios.get("http://localhost:8000/quiz").then((response) => {
+        response.data.forEach((data: any) => {
+          this.datas.push(data);
+        });
+      });
+    },
+    checkanswer(data: any, sound: any) {
+      this.start = true;
+      console.log(data)
+      if (data&&!this.open) {
+        this.greetingSpeech.text = sound;
+        speechSynthesis.speak(this.greetingSpeech);
+        this.score++
+      }
+      if (this.count < 9) {
+        setTimeout(() => {
+          this.count++;
+        }, 1000);
+      } else {
+        this.start = false
+        this.open = true;
+      }
+    },
+
+    countDownTimer() {
+      if (this.time > 0) {
+        setTimeout(() => {
+          if (this.start == true) {
+            this.time -= 1;
+          }
+          this.countDownTimer();
+        }, 1000);
+      } else {
+        console.log("TimeOUt");
+        this.open = true;
+        this.start = false;
+      }
+    },
+
+    reset(){
+      this.start = false;
+      this.time = 90;
+      this.score = 0;
+      this.count = 0;
+      this.open = false;
+      this.getData()
+
+    }
   },
 });
 </script>
@@ -85,11 +214,126 @@ ion-grid {
 
 ion-col {
   max-width: auto;
-  height: 460px;
+  height: 530px;
   background-color: rgba(48, 50, 58, 1);
   border-radius: 20px;
   display: block;
   margin: 18px 0;
+}
+
+.score {
+  color: #ff8a00;
+  font-size: 1.3rem;
+  margin-left: 203px;
+  margin-top: -40px;
+}
+
+.time_score {
+  display: grid;
+}
+
+.time {
+  color: #ff8a00;
+  font-size: 1.3rem;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.btn_reset {
+  width: 50px;
+  height: 30px;
+  margin-left: 110px;
+  margin-top: -35px;
+  --background: #ff8a00;
+}
+
+.img_clock {
+  width: 40px;
+  height: 40px;
+}
+
+.img_score {
+  width: 35px;
+  height: 40px;
+}
+
+.textquiz {
+  color: #ffffff;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.btn {
+  --background: #ff8a00;
+  margin-top: -5px;
+  font-size: 1.5rem;
+  width: 260px;
+  height: 60px;
+  color: #ffffff;
+}
+
+.box {
+  --background: #ff8a00;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  width: 230px;
+  height: 50px;
+  margin-left: 16px;
+  color: #ffffff;
+}
+
+.popup {
+  width: 240px;
+  height: 240px;
+  background-color: aliceblue;
+  margin-left: 20px;
+  margin-top: -450px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  position: fixed;
+}
+
+.time_popup {
+  color: #ff8a00;
+  font-size: 3rem;
+}
+
+.img_clock_popup {
+  width: 60px;
+  height: 60px;
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.score_popup {
+  color: #ff8a00;
+  font-size: 3rem;
+}
+
+.img_score_popup {
+  width: 60px;
+  height: 60px;
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.btn_play {
+  width: 100px;
+  height: 50px;
+  margin-left: 10px;
+  margin-top: 30px;
+  --background: #ff8a00;
+  font-size: 1.5rem;
+}
+
+.btn_back {
+  width: 100px;
+  height: 50px;
+  margin-left: 15px;
+  margin-top: 30px;
+  --background: #ff8a00;
+  font-size: 1.5rem;
 }
 </style>
 

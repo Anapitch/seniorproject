@@ -13,17 +13,17 @@
       <ion-row >
         <ion-col size="12" router-link="/memory">
             <section class="game-board">
-              <div class="card"><img src="../assets/crab.png" class="imgcard"></div>
-              <div class="card"><p class="textcard">run</p></div>
-              <div class="card"><img src="../assets/bag.png" class="imgcard"></div>
+              <div class="card_back"><img src="../assets/crab.png" class="imgcard"></div>
+              <div class="card_back"><p class="textcard">run</p></div>
+              <div class="card_back"><img src="../assets/bag.png" class="imgcard"></div>
               <div class="card"></div>
-              <div class="card"><p class="textcard">bag</p></div>
+              <div class="card_back"><p class="textcard">bag</p></div>
               <div class="card"></div>
-              <div class="card"><img src="../assets/run.png" class="imgcard"></div>
-              <div class="card"><img src="../assets/bird.png" class="imgcard"></div>
-              <div class="card"><p class="textcard">crab</p></div>
+              <div class="card_back"><img src="../assets/run.png" class="imgcard"></div>
+              <div class="card_back"><img src="../assets/bird.png" class="imgcard"></div>
+              <div class="card_back"><p class="textcard">crab</p></div>
               <div class="card"></div>
-              <div class="card"><p class="textcard">bird</p></div>
+              <div class="card_back"><p class="textcard">bird</p></div>
               <div class="card"></div>
             </section>
             <h2>Memory Game</h2>
@@ -34,8 +34,8 @@
         <ion-col size="12" router-link="/quiz">
             <p class="textquiz">Be my guest แปลอย่างไรให้ถูกต้อง</p>
             <img src="../assets/sent01.png">
-            <ion-button class="btn"  expand="block" shape="round">เชิญตามสบายเลยนะ</ion-button><br>
-            <ion-button class="box"  expand="block" shape="round">เป็นแขกของฉันนะ</ion-button>
+            <ion-button class="btn"  expand="block" shape="round">A. เชิญตามสบายเลยนะ</ion-button><br>
+            <ion-button class="box"  expand="block" shape="round">B. เป็นแขกของฉันนะ</ion-button>
             <h2>Quiz Game</h2>
         </ion-col>
       </ion-row>
@@ -111,9 +111,14 @@ ion-col{
 }
 
 .card {
-  background: #012435;
+  background:#FF8A00;
+  border-radius: 5px;
 }
 
+.card_back {
+  background: #FFFFFF;
+  border-radius: 5px;
+}
 .game-board {
   display: grid;
   grid-template-columns: 55px 55px 55px 55px;
@@ -125,9 +130,9 @@ ion-col{
 }
     .imgcard {
       margin-top: 2px;
-      width: 70px;
+      width: 60px;
       height: 50px;
-      margin-left: 2px;
+      margin-left: -2px;
     }
 
      h2 {
@@ -173,8 +178,9 @@ ion-col{
      }
     
     .textcard {
-      color: #FFFFFF;
+      color: #050505;
       text-align: center;
+      font-weight: 300;
       font-size: 20px;
       margin-top: 12px;
     }
