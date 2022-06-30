@@ -55,7 +55,7 @@ export default defineComponent({
     };
   },
   mounted (){
-    axios.get('http://localhost:8000/activity')
+    axios.get('http://engserver.easypayeasywash.tk/activity')
     .then(response => {
         this.info = response.data
         console.log(response)
@@ -140,7 +140,7 @@ img {
    }
 
    h2 {
-     font-size: 20px;
+     font-size: 18px;
      color: aliceblue;
      text-align: center;
      margin-top: 10px;

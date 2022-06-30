@@ -57,7 +57,6 @@
         <ion-button class="btn_back" @click="$router.push('/game')">back</ion-button>
       </diV>
 
-
     </ion-content>
   </ion-page>
 </template>
@@ -75,7 +74,7 @@ export default {
   },
   data() {
     return {
-      time: 5,
+      time: 90,
       memoryCards: [],
       flippedCards: [],
       finish: false,
@@ -133,7 +132,6 @@ export default {
     },
 
     _match(card) {
-      console.log(this.memoryCards);
       if (this.memoryCards.every((card) => card.isMatched === true)) {
         clearInterval(this.interval);
         this.finish = true;
@@ -168,7 +166,7 @@ export default {
       this.score = 0;
       this.data = [];
       this.cards = [];
-      await axios.get("http://localhost:8000/memory").then((response) => {
+      await axios.get("http://engserver.easypayeasywash.tk/memory").then((response) => {
         response.data.forEach((data) => {
           this.cards.push({ image: data["image"], name: data["name"] });
           this.data.push({ image: data["imagetext"], name: data["name"] });
@@ -232,8 +230,8 @@ h1 {
 .time {
   color: #FF8A00;
   font-size: 1.3rem;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-left: 16px;
+  margin-top: 15px;
 }
 
 .btn_reset {
@@ -245,13 +243,14 @@ h1 {
 }
 
 .img_clock {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
 }
 
 .img_score {
-  width: 35px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
+  margin-top: -5px;
 }
 
 .popup {
@@ -324,8 +323,9 @@ h1 {
 .img-black {
   border-radius: 5px;
   background-color: aliceblue;
-  width: 110px;
-  height: 70px;
+  width: 105px;
+  height: 65px;
+  padding: 2px;
 }
 
 

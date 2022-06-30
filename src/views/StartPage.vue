@@ -34,14 +34,14 @@ ion-content {
 
 img {
     width: 38vh;
-    height: 50vh;
-    transform: translateY(20vh);
+    height: 48vh;
+    transform: translateY(16vh);
   }
 
 ion-button {
-    transform: translateY(32vh);
-    width: 40vh;
-    height: 10vh;
+    transform: translateY(30vh);
+    width: 38vh;
+    height: 9vh;
     --background: #FF8A00;
   }
 

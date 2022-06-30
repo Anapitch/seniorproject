@@ -55,7 +55,7 @@ export default defineComponent({
     };
   },
   mounted (){
-    axios.get('http://localhost:8000/occupation')
+    axios.get('http://engserver.easypayeasywash.tk/occupation')
     .then(response => {
         this.info = response.data
         console.log(response)

@@ -40,7 +40,7 @@
         <ion-grid router-link="/occupation">
           <ion-row>
             <ion-col size="12">
-              <img  style="margin-left: 119px" src="../assets/occupation.png" />
+              <img  style="margin-left: 140px" src="../assets/occupation.png" />
               <h2>Occupation</h2>
             </ion-col>
           </ion-row>
@@ -127,17 +127,17 @@ ion-col{
 }
 
 img {
-       width: 130px;
-       height: 145px;
+       width: 128px;
+       height: 143px;
        align-items: center;
-       margin-left: 125px;
+       margin-left: 128px;
    }
 
 h2 {
-     font-size: 27px;
+     font-size: 26px;
      font-family: serif;
      color: #FFFFFF;
-     margin-left: 2.5rem;
+     margin-left: 1.8rem;
      margin-top: -100px;
      font-weight: 90;
    }

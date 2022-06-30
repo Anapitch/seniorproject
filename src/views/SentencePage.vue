@@ -27,16 +27,16 @@
                 <ion-icon :src = "volumeMediumOutline" class="volumeA" @click="activeA(infonew)"></ion-icon>
               </div>
               <div>
-                <p class="exampleA">A : {{ infonew.example_eng_A }}</p><br>
-                <p class="exampleA">{{ infonew.example_thai_A }}</p>
+                <p class="exampleA">A : {{ infonew.ex_eng_A }}</p><br>
+                <p class="exampleA">{{ infonew.ex_thai_A }}</p>
               </div>
               
               <div class="btnB">
                 <ion-icon :src = "volumeMediumOutline" class="volumeB" @click="activeB(infonew)"></ion-icon>
               </div>
               <div>
-                <p class="exampleB">B : {{ infonew.example_eng_B }}</p><br>
-                <p class="exampleB">{{ infonew.example_thai_B }}</p>
+                <p class="exampleB">B : {{ infonew.ex_eng_B }}</p><br>
+                <p class="exampleB">{{ infonew.ex_thai_B }}</p>
               </div>
             </ion-col>
           </ion-row>
@@ -73,7 +73,7 @@ export default defineComponent({
     };
   },
   mounted (){
-    axios.get('http://localhost:8000/sentence')
+    axios.get('http://engserver.easypayeasywash.tk/sentence')
     .then(response => {
         this.info = response.data
         console.log(response)
@@ -85,14 +85,14 @@ export default defineComponent({
       this.greetingSpeech.text = infonew.sentence;
       speechSynthesis.speak(this.greetingSpeech);
     },
-    activeA(infonew: { example_eng_A: string;},) {
+    activeA(infonew: { ex_eng_A: string;},) {
       console.log("infonew", infonew);
-      this.greetingSpeech.text = infonew.example_eng_A;
+      this.greetingSpeech.text = infonew.ex_eng_A;
       speechSynthesis.speak(this.greetingSpeech);
     },
-    activeB(infonew: { example_eng_B: string;},) {
+    activeB(infonew: { ex_eng_B: string;},) {
       console.log("infonew", infonew);
-      this.greetingSpeech.text = infonew.example_eng_B;
+      this.greetingSpeech.text = infonew.ex_eng_B;
       speechSynthesis.speak(this.greetingSpeech);
     },
   },
@@ -126,7 +126,7 @@ ion-icon {
   font-size: 2.3rem;
   text-align: center;
   font-family: serif;
-  transform: translateY(-21vh);
+  transform: translateY(-20vh);
   font-weight: 100;
 }
 
@@ -145,10 +145,12 @@ ion-col{
 }
 
 img {
-       width: 22rem;
-       height: 20rem;
-       margin-top: -8px;
-       margin-left: 26px;
+       width: 19rem;
+       height: 17rem;
+       margin-top: 5px;
+       display: block;
+       margin-left: auto;
+       margin-right: auto;
 }
 
 
@@ -159,26 +161,26 @@ img {
     height: 30px;
     border-radius: 50px;
     margin-left: 5px;
-    margin-top: -18px;
+    margin-top: -5px;
    }
 
 .volume {
     margin-left: -8px;
-    margin-top: 70px;
+    margin-top: 73px;
     width: 22px;
     height: 22px;
 }
 
 
 .sentence {
-     font-size: 19px;
+     font-size: 18px;
      color: aliceblue;
-     margin-top: -30px;
-     transform: translateX(7vh);
+     margin-top: -29px;
+     transform: translateX(6vh);
    }
 
 .translate1 {
-    font-size: 17px;
+    font-size: 16px;
     color: aliceblue;
     margin-top: 18px;
     transform: translateX(1vh);
@@ -186,7 +188,7 @@ img {
 
 
 .translate2 {
-    font-size: 17px;
+    font-size: 16px;
     color: aliceblue;
     margin-top: 13px;
     transform: translateX(1vh);
@@ -211,7 +213,7 @@ img {
 
 .volumeA {
     margin-left: 4px;
-    margin-top: 76px;
+    margin-top: 79px;
     width: 20px;
     height: 20px;
 }
@@ -236,7 +238,7 @@ img {
 
 .volumeB {
     margin-left: 4px;
-    margin-top: 76px;
+    margin-top: 79px;
     width: 20px;
     height: 20px;
 }

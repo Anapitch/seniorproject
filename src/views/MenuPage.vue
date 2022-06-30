@@ -72,8 +72,8 @@ ion-content {
   }
 
 h1 {
-  font-size: 2rem;
-  transform: translateX(8vh);
+  font-size: 2.5rem;
+  transform: translateX(6.5vh);
   font-family: "Tangerine", serif;
   font-style: normal;
   font-weight: 600;
@@ -81,10 +81,10 @@ h1 {
 }
 
 img {
-    width: 25vh;
-    height: 25vh;
-    transform: translateY(-14vh);
-    margin-left: 10rem;
+    width: 30vh;
+    height: 28vh;
+    transform: translateY(-16vh);
+    margin-left: 8rem;
   }
 
 .grid {
@@ -98,24 +98,24 @@ ion-col {
 }
 
 .cardgame {
-  max-width: 72px;
-  max-height: 70px;
-  margin-top: 110px;
+  max-width: 86px;
+  max-height: 86px;
+  margin-top: 117px;
   margin-left: 30px;
 }
 
 .cardsentence {
-  max-width: 128px;
-  max-height: 70px;
-  margin-top: 110px;
-  margin-left: 1px;
+  max-width: 85px;
+  max-height: 85px;
+  margin-top: 117px;
+  margin-left: 30px;
 }
 
 .cardvocab {
-  max-width: 135px;
-  max-height: 80px;
-  margin-top: 103px;
-  margin-left: -3px;
+  max-width: 85px;
+  max-height: 85px;
+  margin-top: 117px;
+  margin-left: 30px;
 }
 
 .text {

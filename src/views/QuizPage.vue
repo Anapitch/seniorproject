@@ -22,47 +22,46 @@
             <div class="time_score">
               <div class="time">
                 <img class="img_clock" src="../assets/clock.png" />
-                <span id="time">{{ time }}</span>
+                <span id="time"> {{ time }} </span>
               </div>
 
               <ion-button class="btn_reset" @click="reset()">reset</ion-button>
 
               <div class="score">
                 <img class="img_score" src="../assets/score.png" />
-                <span id="score">{{ score }}</span>
+                <span id="score"> {{ score }} </span>
               </div>
             </div>
+
             <div v-if="datas.length > 1">
-            <h1>{{count+1}}/10</h1>
               <p class="textquiz">
-                {{ datas[count].question }} แปลอย่างไรให้ถูกต้อง
+               {{count+1}}. {{ datas[count].sentence }} แปลอย่างไรให้ถูกต้อง
               </p>
-              <img :src="datas[count].image" />
+              <img class="imgquiz" :src="datas[count].image" />
               <ion-button
                 class="btn"
-                expand="block"
                 shape="round"
                 @click="
                   checkanswer(
                     datas[count].answer.startsWith('A'),
-                    datas[count].question
+                    datas[count].sentence
                   )
                 "
                 >{{ datas[count].choice_A }}</ion-button
               ><br />
               <ion-button
                 class="box"
-                expand="block"
                 shape="round"
                 @click="
                   checkanswer(
                     datas[count].answer.startsWith('B'),
-                    datas[count].question
+                    datas[count].sentence
                   )
                 "
                 >{{ datas[count].choice_B }}</ion-button
               >
             </div>
+            
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -70,17 +69,16 @@
       <diV class="popup" v-if="open">
         <div class="time_popup">
           <img class="img_clock_popup" src="../assets/clock.png" />
-          <span id="time">{{ time }}</span>
+          <span id="time"> {{ time }} </span>
         </div>
 
         <div class="score_popup">
           <img class="img_score_popup" src="../assets/score.png" />
-          <span id="score">{{ score }}</span>
+          <span id="score"> {{ score }} </span>
         </div>
 
         <ion-button class="btn_play" @click="reset()">play</ion-button>
-        <ion-button class="btn_back" @click="$router.push('/game')"
-          >back</ion-button
+        <ion-button class="btn_back" @click="back()">back</ion-button
         >
       </diV>
     </ion-content>
@@ -127,7 +125,7 @@ export default defineComponent({
   methods: {
     async getData() {
       this.datas = [];
-      await axios.get("http://localhost:8000/quiz").then((response) => {
+      await axios.get("http://engserver.easypayeasywash.tk/sentence").then((response) => {
         response.data.forEach((data: any) => {
           this.datas.push(data);
         });
@@ -140,6 +138,9 @@ export default defineComponent({
         this.greetingSpeech.text = sound;
         speechSynthesis.speak(this.greetingSpeech);
         this.score++
+      }else {
+        var audio=new Audio("https://firebasestorage.googleapis.com/v0/b/seniorproject-a570a.appspot.com/o/soundeffect.mp3?alt=media&token=508f297d-ca8e-475d-9507-986011a339dc")
+        audio.play()
       }
       if (this.count < 9) {
         setTimeout(() => {
@@ -173,9 +174,12 @@ export default defineComponent({
       this.count = 0;
       this.open = false;
       this.getData()
+    },
 
-    }
-  },
+    back() {
+      window.location.href="/game"
+    },
+   },
 });
 </script>
 
@@ -209,12 +213,12 @@ ion-content {
 }
 
 ion-grid {
-  margin-top: -145px;
+  margin-top: -153px;
 }
 
 ion-col {
   max-width: auto;
-  height: 530px;
+  height: 550px;
   background-color: rgba(48, 50, 58, 1);
   border-radius: 20px;
   display: block;
@@ -223,7 +227,7 @@ ion-col {
 
 .score {
   color: #ff8a00;
-  font-size: 1.3rem;
+  font-size: 2rem;
   margin-left: 203px;
   margin-top: -40px;
 }
@@ -234,8 +238,8 @@ ion-col {
 
 .time {
   color: #ff8a00;
-  font-size: 1.3rem;
-  margin-left: 20px;
+  font-size: 2rem;
+  margin-left: 14px;
   margin-top: 20px;
 }
 
@@ -248,13 +252,15 @@ ion-col {
 }
 
 .img_clock {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
 }
 
 .img_score {
-  width: 35px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
+  margin-left: -12px;
+  margin-top: -5px;
 }
 
 .textquiz {
@@ -264,12 +270,21 @@ ion-col {
   font-size: 1.5rem;
 }
 
+.imgquiz {
+       width: 19rem;
+       height: 17rem;
+       margin-top: 5px;
+       display: block;
+       margin-left: auto;
+       margin-right: auto;
+}
 .btn {
   --background: #ff8a00;
-  margin-top: -5px;
+  margin-top: 10px;
   font-size: 1.5rem;
-  width: 260px;
+  width: auto;
   height: 60px;
+  margin-left: -10px;
   color: #ffffff;
 }
 
@@ -277,9 +292,9 @@ ion-col {
   --background: #ff8a00;
   margin-top: 10px;
   font-size: 1.5rem;
-  width: 230px;
+  width: auto;
   height: 50px;
-  margin-left: 16px;
+  margin-left: 1px;
   color: #ffffff;
 }
 

@@ -13,17 +13,17 @@
       <ion-row >
         <ion-col size="12" router-link="/memory">
             <section class="game-board">
-              <div class="card_back"><img src="../assets/crab.png" class="imgcard"></div>
+              <div class="card_back"><img src="../assets/pig.png" class="imgcard"></div>
               <div class="card_back"><p class="textcard">run</p></div>
               <div class="card_back"><img src="../assets/bag.png" class="imgcard"></div>
               <div class="card"></div>
               <div class="card_back"><p class="textcard">bag</p></div>
               <div class="card"></div>
               <div class="card_back"><img src="../assets/run.png" class="imgcard"></div>
-              <div class="card_back"><img src="../assets/bird.png" class="imgcard"></div>
-              <div class="card_back"><p class="textcard">crab</p></div>
+              <div class="card_back"><img src="../assets/cat.png" class="imgcard"></div>
+              <div class="card_back"><p class="textcard">pig</p></div>
               <div class="card"></div>
-              <div class="card_back"><p class="textcard">bird</p></div>
+              <div class="card_back"><p class="textcard">cat</p></div>
               <div class="card"></div>
             </section>
             <h2>Memory Game</h2>
@@ -34,8 +34,8 @@
         <ion-col size="12" router-link="/quiz">
             <p class="textquiz">Be my guest แปลอย่างไรให้ถูกต้อง</p>
             <img src="../assets/sent01.png">
-            <ion-button class="btn"  expand="block" shape="round">A. เชิญตามสบายเลยนะ</ion-button><br>
-            <ion-button class="box"  expand="block" shape="round">B. เป็นแขกของฉันนะ</ion-button>
+            <ion-button class="btn"  expand="block" shape="round">A:เป็นแขกของฉันนะ</ion-button><br>
+            <ion-button class="box"  expand="block" shape="round">B:เชิญตามสบายเลยนะ</ion-button>
             <h2>Quiz Game</h2>
         </ion-col>
       </ion-row>
@@ -130,9 +130,9 @@ ion-col{
 }
     .imgcard {
       margin-top: 2px;
-      width: 60px;
+      width: 48px;
       height: 50px;
-      margin-left: -2px;
+      margin-left: 3px;
     }
 
      h2 {
@@ -143,16 +143,16 @@ ion-col{
 
      img {
        width: 190px;
-       height: 160px;
+       height: 150px;
        margin-left: 40px;
-       margin-top: -20px;
+       margin-top: -5px;
        position: absolute;
 
      }
 
      .btn {
       --background: #FF8A00;
-      margin-top: 128px;
+      margin-top: 145px;
       margin-left: 40px;
       font-size: 14px;
       width: 185px;
@@ -165,7 +165,7 @@ ion-col{
       margin-top: 5px;
       margin-left: 58px;
       font-size: 14px;
-      width: 150px;
+      width: 160px;
       height: 30px;
       color: #FFFFFF;
     }
